@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xG5w1KYQKAMcGEUGekwHFPMNAV+M95NS8Pco2HTexky9R57rlWtIxa6LPmnihZ7v3QtCWtonHJJfpfyyw/XbFg==",
+  "dgSpecHash": "mBv9fa0QfRZVgEwrJJTNTH0rLyoDQfEVg4+DIHaqmOSkpyu3cJOfG2aJKoChc0ciniYT9ak0VwEG18yY9tP/Pg==",
   "success": true,
-  "projectFilePath": "E:\\Documents\\Learn\\Catalog\\Catalog.csproj",
+  "projectFilePath": "E:\\Documents\\Learn\\Catalog\\catalog-api-dotnet\\Catalog.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\OK\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.3\\microsoft.aspnetcore.openapi.7.0.3.nupkg.sha512",
     "C:\\Users\\OK\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

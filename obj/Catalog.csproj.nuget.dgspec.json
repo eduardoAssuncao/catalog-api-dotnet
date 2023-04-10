@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Documents\\Learn\\Catalog\\Catalog.csproj": {}
+    "E:\\Documents\\Learn\\Catalog\\catalog-api-dotnet\\Catalog.csproj": {}
   },
   "projects": {
-    "E:\\Documents\\Learn\\Catalog\\Catalog.csproj": {
+    "E:\\Documents\\Learn\\Catalog\\catalog-api-dotnet\\Catalog.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Documents\\Learn\\Catalog\\Catalog.csproj",
+        "projectUniqueName": "E:\\Documents\\Learn\\Catalog\\catalog-api-dotnet\\Catalog.csproj",
         "projectName": "Catalog",
-        "projectPath": "E:\\Documents\\Learn\\Catalog\\Catalog.csproj",
+        "projectPath": "E:\\Documents\\Learn\\Catalog\\catalog-api-dotnet\\Catalog.csproj",
         "packagesPath": "C:\\Users\\OK\\.nuget\\packages\\",
-        "outputPath": "E:\\Documents\\Learn\\Catalog\\obj\\",
+        "outputPath": "E:\\Documents\\Learn\\Catalog\\catalog-api-dotnet\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\OK\\AppData\\Roaming\\NuGet\\NuGet.Config",
