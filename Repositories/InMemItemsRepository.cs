@@ -2,7 +2,9 @@ using Catalog.Entities;
 
 namespace Catalog.Repositories
 {
-    public class InMemItemsRepository //Repositorio usado para criar uma memória local para teste
+
+    public class InMemItemsRepository : IItemsRepository
+    //Repositorio usado para criar uma memória local para teste
     {
         private readonly List<Item> items = new() //readonly é modificado apenas pelo construtor -> usado para manter a imutabilidade
         {
@@ -18,7 +20,7 @@ namespace Catalog.Repositories
 
         public Item GetItem(Guid id) //Guid é usado para retornar um item específico
         {
-            return items.Where(item => item.Id == id).SingleOrDefault();    
+            return items.Where(item => item.Id == id).SingleOrDefault();
         }
 
     }

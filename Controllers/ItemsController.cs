@@ -1,4 +1,4 @@
-using Catalog.Entities;
+using Catalog.Dtos;
 using Catalog.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,18 +9,31 @@ namespace Catalog.Controllers
     public class ItemsController : ControllerBase//herda de ControllerBase
     {
         
-        private readonly InMemItemsRepository repository;//cria uma variável para o repositório
+        private readonly IItemsRepository repository;//declaração do repositório
 
-        public ItemsController()
+        public ItemsController(IItemsRepository repository)//construtor que recebe o repositório injetado
         {
-            repository = new InMemItemsRepository();//instancia o repositório
+            this.repository = repository;//atribui o repositório ao atributo
         }
 
         [HttpGet]//atributo que indica que o método é um método de GET
-        public IEnumerable<Item> GetItems()//retorna uma lista de itens
+        public IEnumerable<ItemDto> GetItems()//retorna uma lista de itens
         {
-            var items = repository.GetItems();
+            var items = repository.GetItems().Select( item => item.AsDto());//retorna uma lista de itens convertidos para Dto
+
             return items;
+        }
+
+        [HttpGet("{id}")]//atributo que indica que o método é um método de GET e que recebe um parâmetro
+        public ActionResult<ItemDto> GetItem(Guid id)
+        {
+            var item = repository.GetItem(id);
+
+            if (item is null)
+            {
+                return NotFound();  
+            }
+            return item.AsDto();//retorna o item convertido para Dto
         }
     }
 }
