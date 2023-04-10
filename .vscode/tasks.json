@@ -11,7 +11,11 @@
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
-            "problemMatcher": "$msCompile"
+            "problemMatcher": "$msCompile",
+            "group": {// This is the important part to make the task the default build task
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "label": "publish",
