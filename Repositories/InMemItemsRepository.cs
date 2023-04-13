@@ -13,15 +13,19 @@ namespace Catalog.Repositories
             new Item { Id = Guid.NewGuid(), Name = "Bronze Shield", Price = 18, CreatedDate = DateTimeOffset.UtcNow }
         };
 
-        public IEnumerable<Item> GetItems() //IEnumerable é usado para retornar uma lista de itens
+        public IEnumerable<Item> GetItems() //usado para retornar uma lista de itens
         {
-            return items;
+            return items;//retorna a lista de itens
         }
 
-        public Item GetItem(Guid id) //Guid é usado para retornar um item específico
+        public Item GetItem(Guid id) //usado para retornar um item específico
         {
-            return items.Where(item => item.Id == id).SingleOrDefault();
+            return items.Where(item => item.Id == id).SingleOrDefault();//retorna o item que tem o id igual ao id passado
         }
 
+        public void CreateItem(Item item)//usado para criar um item
+        {
+            items.Add(item);//adiciona o item na lista
+        }
     }
 }

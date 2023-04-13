@@ -5,7 +5,7 @@ namespace Catalog
 {
     public static class Extensions
     {
-        public static ItemDto AsDto(this Item item)
+        public static ItemDto AsDto(this Item item)//método de extensão para converter um item em um itemDto
         {
             return new ItemDto
             {
