@@ -51,5 +51,41 @@ namespace Catalog.Controllers
 
             return CreatedAtAction(nameof(GetItem), new { id = item.Id}, item.AsDto()); //retorna o item criado convertido para Dto
         }
+
+        [HttpPut("{id}")]//atributo que indica que o método é um método de PUT e que recebe um parâmetro
+        public ActionResult UpdateItem(Guid id, UpdateItemDto itemDto)//método para atualizar um item
+        {
+            var existingItem = repository.GetItem(id);//retorna o item do repositório
+
+            if (existingItem is null)//se o item não existir retorna um erro
+            {
+                return NotFound();
+            }
+
+            Item updatedItem = existingItem with //cria um novo item com os dados do item existente e os dados do itemDto
+            {
+                Name = itemDto.Name,
+                Price = itemDto.Price
+            };
+
+            repository.UpdateItem(updatedItem);//atualiza o item no repositório
+
+            return NoContent();//retorna um código 204
+        }
+
+        [HttpDelete("{id}")]//atributo que indica que o método é um método de DELETE e que recebe um parâmetro
+        public ActionResult DeleteItem(Guid id)
+        {
+            var existingItem = repository.GetItem(id);//retorna o item do repositório
+
+            if (existingItem == null)
+            {
+                return NotFound();
+            }
+
+            repository.DeleteItem(id);//deleta o item do repositório
+
+            return NoContent();//retorna um código 204
+        }
     }
 }
