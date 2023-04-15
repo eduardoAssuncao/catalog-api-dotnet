@@ -64,3 +64,16 @@ E:\Documents\Learn\Catalog\catalog-api-dotnet\obj\Debug\net7.0\refint\Catalog.dl
 E:\Documents\Learn\Catalog\catalog-api-dotnet\obj\Debug\net7.0\Catalog.pdb
 E:\Documents\Learn\Catalog\catalog-api-dotnet\obj\Debug\net7.0\Catalog.genruntimeconfig.cache
 E:\Documents\Learn\Catalog\catalog-api-dotnet\obj\Debug\net7.0\ref\Catalog.dll
+E:\Documents\Learn\Catalog\catalog-api-dotnet\bin\Debug\net7.0\AWSSDK.Core.dll
+E:\Documents\Learn\Catalog\catalog-api-dotnet\bin\Debug\net7.0\AWSSDK.SecurityToken.dll
+E:\Documents\Learn\Catalog\catalog-api-dotnet\bin\Debug\net7.0\DnsClient.dll
+E:\Documents\Learn\Catalog\catalog-api-dotnet\bin\Debug\net7.0\MongoDB.Bson.dll
+E:\Documents\Learn\Catalog\catalog-api-dotnet\bin\Debug\net7.0\MongoDB.Driver.dll
+E:\Documents\Learn\Catalog\catalog-api-dotnet\bin\Debug\net7.0\MongoDB.Driver.Core.dll
+E:\Documents\Learn\Catalog\catalog-api-dotnet\bin\Debug\net7.0\MongoDB.Libmongocrypt.dll
+E:\Documents\Learn\Catalog\catalog-api-dotnet\bin\Debug\net7.0\SharpCompress.dll
+E:\Documents\Learn\Catalog\catalog-api-dotnet\bin\Debug\net7.0\Snappier.dll
+E:\Documents\Learn\Catalog\catalog-api-dotnet\bin\Debug\net7.0\ZstdSharp.dll
+E:\Documents\Learn\Catalog\catalog-api-dotnet\bin\Debug\net7.0\runtimes\linux\native\libmongocrypt.so
+E:\Documents\Learn\Catalog\catalog-api-dotnet\bin\Debug\net7.0\runtimes\osx\native\libmongocrypt.dylib
+E:\Documents\Learn\Catalog\catalog-api-dotnet\bin\Debug\net7.0\runtimes\win\native\mongocrypt.dll
