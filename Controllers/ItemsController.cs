@@ -18,17 +18,18 @@ namespace Catalog.Controllers
         }
 
         [HttpGet]//atributo que indica que o método é um método de GET
-        public IEnumerable<ItemDto> GetItems()//retorna uma lista de itens
+        public async Task<IEnumerable<ItemDto>> GetItemsAsync()//retorna uma lista de itens
         {
-            var items = repository.GetItems().Select( item => item.AsDto());//retorna uma lista de itens convertidos para Dto
+            var items = (await repository.GetItemsAsync())
+                        .Select( item => item.AsDto());//retorna uma lista de itens convertidos para Dto
 
             return items;
         }
 
         [HttpGet("{id}")]//atributo que indica que o método é um método de GET e que recebe um parâmetro
-        public ActionResult<ItemDto> GetItem(Guid id) //Action result é um tipo de retorno que pode retornar um item ou um erro
+        public async Task<ActionResult<ItemDto>> GetItemAsync(Guid id) //Action result é um tipo de retorno que pode retornar um item ou um erro
         {
-            var item = repository.GetItem(id);//retorna o item do repositório
+            var item = await repository.GetItemAsync(id);//retorna o item do repositório
 
             if (item is null)
             {
@@ -38,7 +39,7 @@ namespace Catalog.Controllers
         }
 
         [HttpPost]//atributo que indica que o método é um método de POST
-        public ActionResult<ItemDto> CreateItem(CreateItemDto itemDto)
+        public async Task<ActionResult<ItemDto>> CreateItemAsync(CreateItemDto itemDto)
         {
             Item item = new(){ //cria um novo item
                 Id = Guid.NewGuid(),
@@ -47,15 +48,15 @@ namespace Catalog.Controllers
                 CreatedDate = DateTimeOffset.UtcNow
             };
 
-            repository.CreateItem(item);//cria o item no repositório
+            await repository.CreateItemAsync(item);//cria o item no repositório
 
-            return CreatedAtAction(nameof(GetItem), new { id = item.Id}, item.AsDto()); //retorna o item criado convertido para Dto
+            return CreatedAtAction(nameof(GetItemAsync), new { id = item.Id}, item.AsDto()); //retorna o item criado convertido para Dto
         }
 
         [HttpPut("{id}")]//atributo que indica que o método é um método de PUT e que recebe um parâmetro
-        public ActionResult UpdateItem(Guid id, UpdateItemDto itemDto)//método para atualizar um item
+        public async Task<ActionResult> UpdateItemAsync(Guid id, UpdateItemDto itemDto)//método para atualizar um item
         {
-            var existingItem = repository.GetItem(id);//retorna o item do repositório
+            var existingItem = await repository.GetItemAsync(id);//retorna o item do repositório
 
             if (existingItem is null)//se o item não existir retorna um erro
             {
@@ -68,22 +69,22 @@ namespace Catalog.Controllers
                 Price = itemDto.Price
             };
 
-            repository.UpdateItem(updatedItem);//atualiza o item no repositório
+            await repository.UpdateItemAsync(updatedItem);//atualiza o item no repositório
 
             return NoContent();//retorna um código 204
         }
 
         [HttpDelete("{id}")]//atributo que indica que o método é um método de DELETE e que recebe um parâmetro
-        public ActionResult DeleteItem(Guid id)
+        public async Task<ActionResult> DeleteItemAsync(Guid id)
         {
-            var existingItem = repository.GetItem(id);//retorna o item do repositório
+            var existingItem = await repository.GetItemAsync(id);//retorna o item do repositório
 
             if (existingItem == null)
             {
                 return NotFound();
             }
 
-            repository.DeleteItem(id);//deleta o item do repositório
+            await repository.DeleteItemAsync(id);//deleta o item do repositório
 
             return NoContent();//retorna um código 204
         }

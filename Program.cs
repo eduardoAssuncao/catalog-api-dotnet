@@ -9,7 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.SuppressAsyncSuffixInActionNames = false;//desabilita a adição de Async no final dos métodos
+});
 
 BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));//registra o serializador do Guid para ser salvo como string no banco de dados
 BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));//registra o serializador do DateTimeOffset para ser salvo como string no banco de dados

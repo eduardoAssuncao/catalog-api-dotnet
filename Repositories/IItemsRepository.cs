@@ -4,10 +4,10 @@ namespace Catalog.Repositories
 {
     public interface IItemsRepository//interface que define os métodos que o repositório deve ter
     {
-        Item GetItem(Guid id);//método para retornar um item específico
-        IEnumerable<Item> GetItems();//método para retornar uma lista de itens
-        void CreateItem(Item item);//método para criar um item
-        void UpdateItem(Item item);//método para atualizar um item
-        void DeleteItem(Guid id);//método para deletar um item
+        Task<Item> GetItemAsync(Guid id);//Task é um tipo de retorno assíncrono, que retorna um item
+        Task<IEnumerable<Item>> GetItemsAsync();//método para retornar uma lista de itens
+        Task CreateItemAsync(Item item);//método para criar um item
+        Task UpdateItemAsync(Item item);//método para atualizar um item
+        Task DeleteItemAsync(Guid id);//método para deletar um item
     }
 }

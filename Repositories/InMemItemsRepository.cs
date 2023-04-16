@@ -13,31 +13,35 @@ namespace Catalog.Repositories
             new Item { Id = Guid.NewGuid(), Name = "Bronze Shield", Price = 18, CreatedDate = DateTimeOffset.UtcNow }
         };
 
-        public IEnumerable<Item> GetItems() //usado para retornar uma lista de itens
+        public async Task<IEnumerable<Item>> GetItemsAsync() //usado para retornar uma lista de itens
         {
-            return items;//retorna a lista de itens
+            return await Task.FromResult(items);//retorna a lista de itens
         }
 
-        public Item GetItem(Guid id) //usado para retornar um item específico
+        public async Task<Item> GetItemAsync(Guid id) //usado para retornar um item específico
         {
-            return items.Where(item => item.Id == id).SingleOrDefault();//retorna o item que tem o id igual ao id passado
+            var item = items.Where(item => item.Id == id).SingleOrDefault();
+            return await Task.FromResult(item);//retorna o item encontrado
         }
 
-        public void CreateItem(Item item)//usado para criar um item
+        public async Task CreateItemAsync(Item item)//usado para criar um item
         {
             items.Add(item);//adiciona o item na lista
+            await Task.CompletedTask;//retorna uma tarefa concluída
         }
 
-        public void UpdateItem(Item item)
+        public async Task UpdateItemAsync(Item item)
         {
             var index = items.FindIndex(existingItem => existingItem.Id == item.Id);
             items[index] = item;
+            await Task.CompletedTask;
         }
 
-        public void DeleteItem(Guid id)
+        public async Task DeleteItemAsync(Guid id)
         {
             var index = items.FindIndex(existingItem => existingItem.Id == id);
             items.RemoveAt(index);
+            await Task.CompletedTask;
         }
     }
 }

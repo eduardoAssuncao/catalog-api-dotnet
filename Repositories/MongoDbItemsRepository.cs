@@ -17,32 +17,32 @@ namespace Catalog.Repositories
             itemsCollection = database.GetCollection<Item>(collectionName);//pega a coleção de itens
         }
 
-        public void CreateItem(Item item)
+        public async Task CreateItemAsync(Item item)// async Task é usado para criar um método assíncrono
         {
-            itemsCollection.InsertOne(item);//insere um item na coleção
+            await itemsCollection.InsertOneAsync(item);//await é usado para esperar a execução do método assíncrono
         }
 
-        public void DeleteItem(Guid id)
-        {
-            var filter = filterBuilder.Eq(item => item.Id, id);//cria um filtro para a busca
-            itemsCollection.DeleteOne(filter);//deleta um item da coleção
-        }
-
-        public Item GetItem(Guid id)
+        public async Task DeleteItemAsync(Guid id)
         {
             var filter = filterBuilder.Eq(item => item.Id, id);//cria um filtro para a busca
-            return itemsCollection.Find(filter).SingleOrDefault();//retorna o item encontrado
+            await itemsCollection.DeleteOneAsync(filter);//deleta um item da coleção
         }
 
-        public IEnumerable<Item> GetItems()
+        public async Task<Item> GetItemAsync(Guid id)
         {
-            return itemsCollection.Find(new BsonDocument()).ToList();//retorna todos os itens da coleção
+            var filter = filterBuilder.Eq(item => item.Id, id);//cria um filtro para a busca
+            return await itemsCollection.Find(filter).SingleOrDefaultAsync();//retorna o item encontrado
         }
 
-        public void UpdateItem(Item item)
+        public async Task<IEnumerable<Item>> GetItemsAsync()
+        {
+            return await itemsCollection.Find(new BsonDocument()).ToListAsync();//retorna todos os itens da coleção
+        }
+
+        public async Task UpdateItemAsync(Item item)
         {
             var filter = filterBuilder.Eq(existingItem => existingItem.Id, item.Id);//cria um filtro para a busca
-            itemsCollection.ReplaceOne(filter, item);//atualiza o item
+            await itemsCollection.ReplaceOneAsync(filter, item);//atualiza o item
         }
     }
 }
